@@ -32,7 +32,7 @@ class Game():
         self.player.render(self.window)
 
         pygame.display.update()
-        self.clock.tick(30)
+        self.clock.tick(10)
 
     def gameloop(self):
         while True:

@@ -36,3 +36,8 @@ class WallTile(Tile):
         super().__init__()
         self.color = (25, 25, 25)
         self.setSolid(True)
+
+class FloorTile(Tile):
+    def __init__(self):
+        super().__init__()
+        self.color = (128, 128, 128)
