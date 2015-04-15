@@ -4,7 +4,7 @@ from random import randint
 
 class Map():
     def __init__(self):
-        self.size = (40, 24)
+        self.size = (80, 48)
 
         self.map = [[GrassTile() for x in range(self.size[1])] for x in range(self.size[0])]
 
@@ -17,11 +17,12 @@ class Map():
                 else:
                     self.map[x][y] = GrassTile()
         self.createRoom(0, 0, 10, 8)
+        self.createRoom(9, 0, 15, 20)
 
     def update(self, player):
         for y in range(self.size[1]):
             for x in range(self.size[0]):
-                if player.x/32 == x and player.y/32 == y:
+                if player.x/self.map[x][y].getTileSize() == x and player.y/self.map[x][y].getTileSize() == y:
                     self.map[x][y].steppedOn()
                     if type(self.map[x][y]) is GrassTile:
                         if self.map[x][y].health <= 0:
@@ -37,7 +38,7 @@ class Map():
     def render(self, window):
         for y in range(self.size[1]):
             for x in range(self.size[0]):
-                self.map[x][y].render(window, (x*32, y*32))
+                self.map[x][y].render(window, (x*self.map[x][y].getTileSize(), y*self.map[x][y].getTileSize()))
 
     def createRoom(self, x, y, w, h):
         for _y in range(h):

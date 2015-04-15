@@ -33,7 +33,7 @@ class Game():
         self.player.render(self.window)
 
         pygame.display.update()
-        self.clock.tick(10)
+        self.clock.tick(60)
 
     def gameloop(self):
         while True:

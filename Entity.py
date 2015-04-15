@@ -6,13 +6,14 @@ class Entity(object):
         self.x = x
         self.y = y
         self.color = color
+        self.size = 16
 
     def update(self):
         pass
 
     def render(self, window):
-        pygame.draw.rect(window, self.color, (self.x, self.y, 32, 32))
-        pygame.draw.rect(window, (0, 0, 0), (self.x, self.y, 32, 32), 1)
+        pygame.draw.rect(window, self.color, (self.x, self.y, self.size, self.size))
+        pygame.draw.rect(window, (0, 0, 0), (self.x, self.y, self.size, self.size), 1)
 
 
 class Player(Entity):
@@ -23,14 +24,14 @@ class Player(Entity):
     def update(self):
         key = pygame.key.get_pressed()
         if key[pygame.K_w]:
-            if not self.world.map[int(self.x / 32)][int(self.y / 32) - 1].isSolid():
-                self.y -= 32
+            if not self.world.map[int(self.x / self.size)][int(self.y / self.size) - 1].isSolid():
+                self.y -= self.size
         if key[pygame.K_s]:
-            if not self.world.map[int(self.x / 32)][int(self.y / 32) + 1].isSolid():
-                self.y += 32
+            if not self.world.map[int(self.x / self.size)][int(self.y / self.size) + 1].isSolid():
+                self.y += self.size
         if key[pygame.K_a]:
-            if not self.world.map[int(self.x / 32) - 1][int(self.y / 32)].isSolid():
-                self.x -= 32
+            if not self.world.map[int(self.x / self.size) - 1][int(self.y / self.size)].isSolid():
+                self.x -= self.size
         if key[pygame.K_d]:
-            if not self.world.map[int(self.x / 32) + 1][int(self.y / 32)].isSolid():
-                self.x += 32
+            if not self.world.map[int(self.x / self.size) + 1][int(self.y / self.size)].isSolid():
+                self.x += self.size
