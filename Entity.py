@@ -6,7 +6,7 @@ class Entity(object):
         self.x = x
         self.y = y
         self.color = color
-        self.size = 16
+        self.size = 32
 
     def update(self):
         pass

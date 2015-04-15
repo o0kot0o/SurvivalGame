@@ -26,6 +26,7 @@ class Game():
         self.world.update(self.player)
 
     def render(self):
+        pygame.display.set_caption('Survival - FPS: %d' % self.clock.get_fps())
         self.window.fill((0, 0, 0))
 
         self.world.render(self.window)
@@ -33,7 +34,7 @@ class Game():
         self.player.render(self.window)
 
         pygame.display.update()
-        self.clock.tick(60)
+        self.clock.tick(30)
 
     def gameloop(self):
         while True:

@@ -10,7 +10,7 @@ class Tile(object):
         self.lastStepOn = 0
         self.health = 3
         self.occupied = False
-        self.size = 16
+        self.size = 32
 
         self.start_time = time.clock()
 
@@ -29,6 +29,9 @@ class Tile(object):
     def getTileSize(self):
         return self.size
 
+    def getTileType(self):
+        return type(self)
+
     def update(self):
         self.tick = time.clock() - self.start_time
         time_past = (self.tick - self.lastStepOn)
@@ -42,7 +45,7 @@ class Tile(object):
             elif self.health > 3:
                 self.health = 3
 
-        self.label = self.font.render(str(int(self.health)), True, (255, 255, 255))
+        # self.label = self.font.render(str(int(self.health)), True, (255, 255, 255))
 
     def steppedOn(self):
         if self.occupied:
@@ -59,7 +62,6 @@ class Tile(object):
                 self.health = 3
         self.occupied = True
         self.start_time = time.clock()
-
 
     def render(self, window, position):
         pygame.draw.rect(window, self.color, (position[0], position[1], self.size, self.size))
