@@ -24,3 +24,15 @@ class GrassTile(Tile):
     def __init__(self):
         super().__init__()
         self.color = (75, 255, 75)
+
+
+class DirtTile(Tile):
+    def __init__(self):
+        super().__init__()
+        self.color = (120,72,0)
+
+class WallTile(Tile):
+    def __init__(self):
+        super().__init__()
+        self.color = (25, 25, 25)
+        self.setSolid(True)
