@@ -1,4 +1,5 @@
 import pygame
+from map import Map
 
 
 class Game():
@@ -10,6 +11,8 @@ class Game():
         self.window = pygame.display.set_mode(self.window_size)
         pygame.display.set_caption(self.title)
 
+        self.world = Map()
+
     def update(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -18,6 +21,8 @@ class Game():
 
     def render(self):
         self.window.fill((0, 0, 0))
+
+        self.world.render(self.window)
 
         pygame.display.update()
 
