@@ -12,7 +12,7 @@ class Entity(object):
 
     def render(self, window):
         pygame.draw.rect(window, self.color, (self.x, self.y, 32, 32))
-        pygame.draw.rect(window, (0, 0, 0), (self.x, self.y, 32, 32), 2)
+        pygame.draw.rect(window, (0, 0, 0), (self.x, self.y, 32, 32), 1)
 
 
 class Player(Entity):

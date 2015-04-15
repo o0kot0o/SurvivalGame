@@ -18,8 +18,21 @@ class Map():
                     self.map[x][y] = GrassTile()
         self.createRoom(0, 0, 10, 8)
 
-    def update(self):
-        pass
+    def update(self, player):
+        for y in range(self.size[1]):
+            for x in range(self.size[0]):
+                if player.x/32 == x and player.y/32 == y:
+                    self.map[x][y].steppedOn()
+                    if type(self.map[x][y]) is GrassTile:
+                        if self.map[x][y].health <= 0:
+                            self.map[x][y] = DirtTile()
+                            self.map[x][y].health = 0
+                else:
+                    self.map[x][y].occupied = False
+                    if type(self.map[x][y]) is DirtTile:
+                        if self.map[x][y].health == 3:
+                            self.map[x][y] = GrassTile()
+                self.map[x][y].update()
 
     def render(self, window):
         for y in range(self.size[1]):

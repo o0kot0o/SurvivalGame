@@ -23,6 +23,7 @@ class Game():
                 quit()
 
         self.player.update()
+        self.world.update(self.player)
 
     def render(self):
         self.window.fill((0, 0, 0))
